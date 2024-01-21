@@ -22,17 +22,19 @@ let candidateAnswers = " ";
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-  candidateName = input.question(`Please enter your name:    `);
-  let candidateName= prompt;
-  console.log(`Hello,  + ${candidateName}  + !`);
+  let candidateName= " ";
+  candidateName = input.question(`Please enter your name: `);
+  
+  console.log(`Hello, ${candidateName}!`);
 }
-
+ 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  question  = input.question(" ");
-  let question = prompt
+  
+ 
   for (let i = 0; i < questions.length; i++) {
     console.log(questions[i]);
+    
   } 
 }
 
@@ -49,7 +51,7 @@ function gradeQuiz(candidateAnswers) {
 
   return grade;
 }
-
+runProgram();
 function runProgram() {
   askForName();
   // TODO 1.1c: Greet candidate using their name //

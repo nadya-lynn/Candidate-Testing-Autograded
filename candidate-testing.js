@@ -7,7 +7,7 @@ let candidateName = " ";
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
 let question ="Who was the first American woman in space? ";
 let correctAnswer= "Sally Ride";
-let candidateAnswer= [ ];
+let candidateAnswer= "";
 
 
 //TODO: Variables for Part 2
@@ -17,11 +17,11 @@ let questions = ["Who was the first American woman in space? " ,
 "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? " , 
 "What is the minimum crew size for the ISS? "];
 let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
-let candidateAnswers = " ";
+let candidateAnswers = [];
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-  let candidateName= " ";
+  let candidateName;
   candidateName = input.question(`Please enter your name: `);
   
   console.log(`Hello, ${candidateName}!`);
@@ -31,29 +31,55 @@ function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   for (let i = 0; i < questions.length; i++) {
     console.log(`\n ${questions[i]}`);
-    candidateAnswer = input.question(`Your Answer: `);
-    gradeQuiz(candidateAnswer, i);
+  
+   //candidateAnswers.push(candidateAnswers);
+   let candidateAnswer = input.question(`Your Answer: `);
+   console.log(`Correct Answer: ${correctAnswers[i]}`);
+   candidateAnswers.push(candidateAnswer);
+  //  gradeQuiz(candidateAnswers);  
   } 
 }
 
-function gradeQuiz(candidateAnswer, questionIndex) {
+function gradeQuiz(candidateAnswers) {
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-    if (candidateAnswer === correctAnswers[questionIndex]) {
-      console.log(`Correct Answer: ${correctAnswers[questionIndex]}`)
-    } else{
-      console.log(`Correct Answer: ${correctAnswers[questionIndex]}`)
-      console.log(`Try Again!`);
+  let countOfCorrectAnswers = 0;
+  let countOfWrongAnswers = 0;  
+  
+  for ( i = 0; i < candidateAnswers.length; i++) {
+    let correctAnswer = correctAnswers[i].toLowerCase();
+      if (candidateAnswers[i].toLowerCase() === correctAnswer) {
+        //console.log(`Correct Answer: ${correctAnswer}`);
+        countOfCorrectAnswers +=1;
+      } else {
+        //console.log(`Your answer is wrong...`);
+        
+        countOfWrongAnswers+=1;
+      }
     }
- 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
 
+   //TODO 3.2 use this variable to calculate the candidates score.
+    let grade = countOfCorrectAnswers / questions.length * 100;
+    let studentSituation="";
+    if (grade >= 80) {
+      studentSituation ==="Passed."
+      console.log(`\nStatus: Passed!`);  
+    } else {
+      studentSituation === "Failed."
+      console.log(`\nStatus: Failed`);
+    }
+  
+    console.log(`Student Grade: ${grade}%.  Correct answers : ${countOfCorrectAnswers}, Wrong answers: ${countOfWrongAnswers}`);
+  
   return grade;
 }
-runProgram();
+
 function runProgram() {
+  
   askForName();
   // TODO 1.1c: Greet candidate using their name //
   askQuestion();
+  //finalGrade();
+  gradeQuiz(candidateAnswers);
 }
 
 // ----------- Don't write any code or change any code below this line ---------- //

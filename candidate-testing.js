@@ -23,7 +23,6 @@ function askForName() {
   // TODO 1.1b: Ask for candidate's name //
   let candidateName;
   candidateName = input.question(`Please enter your name: `);
-  
   console.log(`Hello, ${candidateName}!`);
 }
  
@@ -31,15 +30,11 @@ function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
   for (let i = 0; i < questions.length; i++) {
     console.log(`\n ${questions[i]}`);
-  
-   //candidateAnswers.push(candidateAnswers);
    let candidateAnswer = input.question(`Your Answer: `);
    console.log(`Correct Answer: ${correctAnswers[i]}`);
-   candidateAnswers.push(candidateAnswer);
-  //  gradeQuiz(candidateAnswers);  
+   candidateAnswers.push(candidateAnswer); 
   } 
 }
-
 function gradeQuiz(candidateAnswers) {
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
   let countOfCorrectAnswers = 0;
@@ -48,11 +43,8 @@ function gradeQuiz(candidateAnswers) {
   for ( i = 0; i < candidateAnswers.length; i++) {
     let correctAnswer = correctAnswers[i].toLowerCase();
       if (candidateAnswers[i].toLowerCase() === correctAnswer) {
-        //console.log(`Correct Answer: ${correctAnswer}`);
         countOfCorrectAnswers +=1;
       } else {
-        //console.log(`Your answer is wrong...`);
-        
         countOfWrongAnswers+=1;
       }
     }
@@ -67,9 +59,7 @@ function gradeQuiz(candidateAnswers) {
       studentSituation === "Failed."
       console.log(`\nStatus: Failed`);
     }
-  
     console.log(`Student Grade: ${grade}%.  Correct answers : ${countOfCorrectAnswers}, Wrong answers: ${countOfWrongAnswers}`);
-  
   return grade;
 }
 
